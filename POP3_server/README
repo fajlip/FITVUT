@@ -1,0 +1,46 @@
+DNS server
+
+Autor: Filip Brezna, xbrezn00@stud.fit.vutbr.cz
+
+Datum: 20. 11. 2017
+
+
+Program plni funkci jednoducheho POP3 serveru, uspesne komunikuje s klientem.
+
+Pokud chceme program spoustet na standardnim portu 110, je nutne jej spustit s pravy uzivatele root.
+Ukoncit server lze zaslanim signalu SIGINT.
+
+Projekt byl testovan a prelozen na referencnim stroji Merlin i na Ubuntu verze 14.04.5
+
+Rozsireni projektu:
+	Implementována funkce TOP, je ji tedy mozne testovat
+
+
+Seznam souboru:
+
+	Makefile					- soubor pro preklad projektu
+	manual.pdf					- dokumentace k projektu
+	README						- tento soubor
+	popser.cpp					- hlavni zdrojovy kod
+	communication_handler.cpp	- zdrojovy kod implementujici funkce POP3 serveru
+	popser_class.h				- hlavickovy soubor pro mssg_response.cpp
+	md5.h						- hlavickovy soubor pro md5.cpp
+	md5.cpp 					- algoritmus pro sifrovani hesla pomoci MD5 hashe
+
+
+
+Možnosti aplikace:
+Pokud chceme server provozovat na standardním portu 110, je nutné jej spouštět s právy uživatele root. Následuje popis spuštění aplikace a parametrů k tomu určených, jejich pořadí je libovolné.
+
+./popser [-h] [-a PATH] [-c] [-p PORT] [-d PATH] [-r]
+-a (auth file) - cesta k souboru s přihlašovacími údaji
+-c (clear pass) - volitelný parametr, při zadání server akceptuje autentizační metodu, která přenáší heslo v nešifrované podobě (jinak přijímá jen hesla v šifrované podobě – hash
+-p (port) - číslo portu na kterém bude běžet server
+-d (directory) - cesta do složky Maildir (např. ~/Maildir/)
+-r (reset) - server vymaže všechny svoje pomocné soubory a emaily z Maildir adresářové struktury vrátí do stavu, jako kdyby proces popser nebyl nikdy spuštěn (netýká se časových značek, jen názvu a umístnění souborů) (týká se to jen emailů, které se v adresářové struktuře nacházejí
+
+3 režimy běhu:
+výpis nápovědy – zadaný parametr "-h"
+jen reset – zadaný jen parametr "-r"
+běžný režim – zadané parametry "-a", "-p", "-d" a volitelně parametry "-c" a "-r"
+
