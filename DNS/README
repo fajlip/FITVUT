@@ -1,0 +1,43 @@
+DNS server
+
+Autor: Filip Brezna, xbrezn00@stud.fit.vutbr.cz
+
+Datum: 19. 11. 2016
+
+
+Program plni funkci jednoducheho DNS serveru. Vstupem jsou pozadavky query
+od klientu, vystupem potom proste odpovedi ze zonovych souboru.
+
+Spoustet program lze pouze s pravy roota, aby bylo mozne pouzivat port 53.
+Ukoncit server lze zaslanim signalu SIGINT.
+
+Projekt je prelozitelny na operacnich systemech Linux, ktere maji gcc/g++ verzi
+alespon 4.7 nebo vyssi.
+
+Rozsireni projektu:
+	
+	Zadne rozsireni.
+
+
+Seznam souboru:
+
+	Makefile		- soubor pro preklad projektu
+	manual.pdf		- dokumentace k projektu
+	README			- tento soubor
+	roughDNS.cpp		- hlavni zdrojovy kod
+	mssg_response.cpp	- zdrojovy kod implementujici funkce DNS serveru
+	mssg_response.h		- hlavickovy soubor pro mssg_response.cpp
+	mssg_class.h		- hlavickovy soubor definujici datovou strukturu a metody pro DNS server
+	mssg_def.h 		- hlavickovy soubor definujici polozky z pozadavku query
+	parser.cpp		- zdrojový kod implemetující parser pro parsovní zónových souborů
+	parser.h 		- hlavickovy soubor pro parser.cpp
+
+
+Priklad spusteni:
+
+	-m [--mitm] <ip_address>  resolvuje každý dotaz na A na zvolenou IP
+	-h [--help] vypíše nápovědu
+	-p [--port] port na kterém bude server naslouchat, pokud parametr není zadaný, použije standardní port 53
+	<zonefile> posledním povinným argumentem je jméno zónového souboru
+
+Syntax: ./roughDNS [-m] [-h] [-p <port>] [<zonefile>]
